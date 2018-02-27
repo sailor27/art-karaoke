@@ -66,9 +66,8 @@ describe('Karaoke App', () => {
     });
 
     it('Should change image', () => {
-      const url = 'https://media.giphy.com/media/brwknFAZxzfRm/giphy.gif'
-      const action = actions.changeImage(url);
-      expect(imageChangeReducer(initialState.image, actions.changeImage(url)).toEqual(url));
+      const test = 'https://media.giphy.com/media/brwknFAZxzfRm/giphy.gif';
+      expect(imageChangeReducer(initialState.image, actions.changeImage(test))).toEqual(test);
     });
 
   });
