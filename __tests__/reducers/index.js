@@ -60,9 +60,17 @@ describe('Karaoke App', () => {
   });
 
   describe('imageChangeReducer', () => {
+
     it('Should accept and return initial state.', () => {
       expect(imageChangeReducer(initialState.image, { type: null })).toEqual(initialState.image);
     });
+
+    it('Should change image', () => {
+      const url = 'https://media.giphy.com/media/brwknFAZxzfRm/giphy.gif'
+      const action = actions.changeImage(url);
+      expect(imageChangeReducer(initialState.image, actions.changeImage(url)).toEqual(url));
+    });
+
   });
 
   describe('rootReducer', () => {
