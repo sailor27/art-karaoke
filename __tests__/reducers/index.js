@@ -1,6 +1,7 @@
 import constants from './../../src/constants';
 import songChangeReducer from './../../src/reducers/songChangeReducer';
 import lyricChangeReducer from './../../src/reducers/lyricChangeReducer';
+import imageChangeReducer from './../../src/reducers/imageChangeReducer';
 import rootReducer from './../../src/reducers/';
 import { createStore } from 'redux';
 import * as actions from './../../src/actions';
@@ -55,6 +56,12 @@ describe('Karaoke App', () => {
 
     it('Should change selectedSong.', () => {
       expect(songChangeReducer(initialState.currentSongId, actions.changeSong(2))).toEqual(2);
+    });
+  });
+
+  describe('imageChangeReducer', () => {
+    it('Should accept and return initial state.', () => {
+      expect(imageChangeReducer(initialState.image, { type: null })).toEqual(initialState.image);
     });
   });
 

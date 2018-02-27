@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { nextLyric, restartSong } from './../actions';
 
-const SongDisplay = ({ dispatch, song }) => {
+const SongDisplay = ({ dispatch, song, image }) => {
   const { title, artist, songArray, arrayPosition, id } = song;
   const currentLine = songArray[arrayPosition];
+
   console.log(currentLine.split(' '));
   let action;
   return (
@@ -24,6 +25,9 @@ const SongDisplay = ({ dispatch, song }) => {
         <h1>
           {currentLine}
         </h1>
+        <div>
+          <img src={image}/>
+        </div>
       </div>
     </div>
   );
@@ -36,10 +40,12 @@ SongDisplay.propTypes = {
   artist: PropTypes.string,
   songArray: PropTypes.array,
   arrayPosition: PropTypes.number,
-  dispatch: PropTypes.func
+  dispatch: PropTypes.func,
+  image: PropTypes.string
 };
 
 const mapStateToProps = state => {
+  const image = state.image;
   const song = state.songsById[state.currentSongId];
   const songInfo = {
     id: song.songId,
@@ -49,7 +55,8 @@ const mapStateToProps = state => {
     arrayPosition: song.arrayPosition
   };
   return {
-    song: songInfo
+    song: songInfo,
+    image: image
   };
 };
 

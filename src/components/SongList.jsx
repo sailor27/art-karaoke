@@ -16,7 +16,7 @@ const SongList = ({ dispatch, songList }) => {
           }
           dispatch(changeSong(songId));
         }}>
-          {song.title} by {song.artist}</li>;
+          {song.title} by {song.artist} </li>;
       })}
     </div>
   );
@@ -24,7 +24,7 @@ const SongList = ({ dispatch, songList }) => {
 
 SongList.propTypes = {
   songList: PropTypes.object,
-  dispatch: PropTypes.func
+  dispatch: PropTypes.func,
 };
 
 const mapStateToProps = state => {
