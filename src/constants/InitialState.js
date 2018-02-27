@@ -5,13 +5,14 @@ const songList = {
 
 export const initialState = {
   currentSongId: 1,
+  image: 'url',
   songsById: {
     1: {
       title: 'Bye Bye Bye',
       artist: 'N\'Sync',
       songId: 1,
       songArray: songList[1],
-      arrayPosition: 0,
+      arrayPosition: 0
     },
     2: {
       title: 'What\'s Goin\' On',
