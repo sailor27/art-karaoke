@@ -12,6 +12,7 @@ export const initialState = {
       songId: 1,
       songArray: songList[1],
       arrayPosition: 0,
+      imageURL: 'https://ids.lib.harvard.edu/ids/view/18757399?width=600'
     },
     2: {
       title: 'What\'s Goin\' On',
@@ -19,6 +20,7 @@ export const initialState = {
       songId: 2,
       songArray: songList[2],
       arrayPosition: 0,
+      imageURL: 'https://ids.lib.harvard.edu/ids/view/18757399?width=600'
     }
   }
 };

@@ -32,7 +32,7 @@ describe('Karaoke App', () => {
       expect(lyricChangeReducer(initialState.songsById, action)[action.songId]).toEqual(newStateEntry);
     });
 
-    it('Update state on receive song', () => {
+    it('Should update state on receive song', () => {
       const action = actions.receiveSong('kiss', 'prince', 1, ['you don\'t have to be beautiful', 'to turn me on']);
       const newObject = {
         isFetching: false,
@@ -41,10 +41,20 @@ describe('Karaoke App', () => {
         songId: action.songId,
         receivedAt: action.receivedAt,
         songArray: action.songArray,
-        arrayPosition: 0
+        arrayPosition: 0,
+
       };
       expect(lyricChangeReducer(initialState.songsById, action) [action.songId]).toEqual(newObject);
     });
+
+    // it ('Should update state when API art is being requested.', () => {
+    //   const action = actions.requestObject('motherwell');
+    //   const newStateEntry = {
+    //     isFetching: true,
+    //     artId: action.objectid,
+    //     imageUrl: action.records[primaryimageurl]
+    //   };
+    // });
 
   });
 

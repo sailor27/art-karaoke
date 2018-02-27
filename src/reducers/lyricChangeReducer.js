@@ -44,13 +44,14 @@ const lyricChangeReducer = (state = initialState.songsById, action) => {
       artist: action.artist,
       songArray: action.songArray,
       arrayPosition: 0,
-      songId: action.songId
+      songId: action.songId,
     });
     newSongsByIdStateSlice = Object.assign({}, state, {
       [action.songId]: newSongsByIdEntry
     });
     return newSongsByIdStateSlice;
-
+  // case types.REQUEST_OBJECT:
+    //what goes here?? do we need a new state slice?
   default:
     return state;
   }

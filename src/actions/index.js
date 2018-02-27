@@ -31,6 +31,11 @@ export const receiveSong = (title, artist, songId, songArray) => ({
   receivedAt: Date.now()
 });
 
+// export const requestObject = (searchTerm) => ({
+//   type: types.REQUEST_OBJECT
+//   //?? what goes here?
+// });
+
 //async action - .then waits for API response to return
 export function fetchSongId(title) {
   return function(dispatch){
@@ -69,6 +74,18 @@ export function fetchLyrics(title, artist, musicMatchId, localSongId, dispatch) 
     }
   });
 }
+
+// export function fetchObjectId(searchTerm) {
+//   return function (dispatch) {
+//     dispatch(requestObject(searchTerm));
+//     return fetch('https://api.harvardartmuseums.org/object?classification=Paintings&keyword=' + searchTerm + '&apikey=2f509760-1b29-11e8-8784-e3318746e9d2').then(
+//       response => response.json(),
+//       error => console.log('An error with the harvard art museum api fetch occurred', error)
+//     ).then(function(json) {
+//       console.log('YAYYYYYY WE DID IT.API RESPONSE: ', json);
+//     });
+//   };
+// }
 
 
 

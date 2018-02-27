@@ -4,7 +4,7 @@ import lyricChangeReducer from './lyricChangeReducer';
 
 const rootReducer = combineReducers({
   currentSongId: songChangeReducer,
-  songsById: lyricChangeReducer
+  songsById: lyricChangeReducer,
 });
 
 export default rootReducer;

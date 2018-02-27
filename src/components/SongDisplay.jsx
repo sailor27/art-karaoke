@@ -4,9 +4,11 @@ import { connect } from 'react-redux';
 import { nextLyric, restartSong } from './../actions';
 
 const SongDisplay = ({ dispatch, song }) => {
-  const { title, artist, songArray, arrayPosition, id } = song;
+
+  const { title, artist, songArray, arrayPosition, id, imageURL } = song;
   const currentLine = songArray[arrayPosition];
-  console.log(currentLine.split(' '));
+  console.log(song);
+  console.log(imageURL);
   let action;
   return (
     <div>
@@ -25,6 +27,10 @@ const SongDisplay = ({ dispatch, song }) => {
           {currentLine}
         </h1>
       </div>
+      <div>
+        <p>Image:</p>
+        {imageURL}
+      </div>
     </div>
   );
 };
@@ -36,7 +42,7 @@ SongDisplay.propTypes = {
   artist: PropTypes.string,
   songArray: PropTypes.array,
   arrayPosition: PropTypes.number,
-  dispatch: PropTypes.func
+  dispatch: PropTypes.func,
 };
 
 const mapStateToProps = state => {
@@ -46,7 +52,7 @@ const mapStateToProps = state => {
     artist: song.artist,
     title: song.title,
     songArray: song.songArray,
-    arrayPosition: song.arrayPosition
+    arrayPosition: song.arrayPosition,
   };
   return {
     song: songInfo
