@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { restartSong, changeSong, changeImage } from './../actions';
+import { restartSong, changeSong } from './../actions';
 
 const SongList = ({ dispatch, songList }) => {
-  let action;
-  dispatch(changeImage('https://media.giphy.com/media/brwknFAZxzfRm/giphy.gif'));
   return (
     <div>
       <em>Or select from our list:</em>
@@ -16,6 +14,7 @@ const SongList = ({ dispatch, songList }) => {
             dispatch(restartSong(songId));
           }
           dispatch(changeSong(songId));
+
         }}>
           {song.title} by {song.artist} </li>;
       })}

@@ -1,14 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { nextLyric, restartSong } from './../actions';
+import { nextLyric, restartSong, changeImage } from './../actions';
 
 const SongDisplay = ({ dispatch, song, image }) => {
   const { title, artist, songArray, arrayPosition, id } = song;
   const currentLine = songArray[arrayPosition];
-
-  console.log(currentLine.split(' '));
-  let action;
+  // let action;
   return (
     <div>
       <h1>{title}</h1>
@@ -18,6 +16,7 @@ const SongDisplay = ({ dispatch, song, image }) => {
         e.preventDefault();
         if(!(arrayPosition === songArray.length - 1)) {
           dispatch(nextLyric(id));
+          /*dispatch(changeImage('https://media.giphy.com/media/brwknFAZxzfRm/giphy.gif'));*/
         } else {
           dispatch(restartSong(id));
         }
@@ -45,7 +44,7 @@ SongDisplay.propTypes = {
 };
 
 const mapStateToProps = state => {
-  const image = state.image;
+  const image = state.image.url;
   const song = state.songsById[state.currentSongId];
   const songInfo = {
     id: song.songId,

@@ -1,0 +1,16 @@
+ADDING A NEW ACTION
+1) Write test for action inside of the test for the corresponding reducer
+    Return initial state only, then the second test
+2) Export constant from actiontypes that is like this: CHANGE_IMAGE
+3) In actions index.js, export function like this: changeImage
+        This is where the logic is written
+4) In reducer, add action as a case in the switch statement
+        look into "action.arg"
+5) Return 1 to 4 until test passes
+6) Import function from actions to component where the action is dispatched
+7) Dispatch the action
+
+
+//api.giphy.com/v1/gifs/search?q=hounds&api_key=rPLbf9a8yUJf1loewisunwUgD35IUL1g&limit=1
+//86bd7d90f10da3ddcca488342fe9426f - musixmatch
+//rPLbf9a8yUJf1loewisunwUgD35IUL1g -giphy

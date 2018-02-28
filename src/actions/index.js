@@ -31,9 +31,10 @@ export const receiveSong = (title, artist, songId, songArray) => ({
   receivedAt: Date.now()
 });
 
-export const changeImage = (url) => ({
+export const changeImage = (url, image) => ({
   type: types.CHANGE_IMAGE,
-  url
+  url,
+  image
 });
 
 //async action - .then waits for API response to return
@@ -75,8 +76,18 @@ export function fetchLyrics(title, artist, musicMatchId, localSongId, dispatch) 
   });
 }
 
-
-
-//86bd7d90f10da3ddcca488342fe9426f - musixmatch
-// 2f509760-1b29-11e8-8784-e3318746e9d2 - harvard art museums api
-//https://api.harvardartmuseums.org/object?classification=Paintings&keyword=bye&apikey=2f509760-1b29-11e8-8784-e3318746e9d2
+export function fetchGif(title, dispatch) {
+  return fetch('http://api.giphy.com/v1/gifs/search?q=' + title + '&api_key=rPLbf9a8yUJf1loewisunwUgD35IUL1g&limit=1').then(
+    response => response.json(),
+    error => console.log('An error occured requesting gif.', error)
+  ).then(function(json){
+    console.log(json.data[0].url);
+    if (json.data[0].url){
+      let url = json.data[0].url;
+      console.log('YAY API RESPONSE: ' + url);
+      dispatch(changeImage(url));
+    } else {
+      console.log('We could not find any gifs :(');
+    }
+  });
+}

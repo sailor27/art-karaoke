@@ -5,7 +5,10 @@ const songList = {
 
 export const initialState = {
   currentSongId: 1,
-  image: 'https://media.giphy.com/media/SG0BpeGubLRjHj6iYT/giphy.gif',
+  image: {
+    url: 'https://media.giphy.com/media/SG0BpeGubLRjHj6iYT/giphy.gif'
+  },
+
   songsById: {
     1: {
       title: 'Bye Bye Bye',

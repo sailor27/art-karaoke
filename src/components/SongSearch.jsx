@@ -1,5 +1,5 @@
 import React from 'react';
-import { fetchSongId } from './../actions';
+import { fetchSongId, fetchGif } from './../actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -13,8 +13,7 @@ function SongSearch({ dispatch }){
           return;
         }
         dispatch(fetchSongId(input.value.trim()));
-
-        console.log('SEARCHED TITLE:');
+        dispatch(fetchGif(input.value));
         console.log(input.value.trim());
 
         input.value = '';
