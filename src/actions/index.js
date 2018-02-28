@@ -81,7 +81,6 @@ export function fetchGif(title, dispatch) {
       response => response.json(),
       error => console.log('An error occured requesting gif.', error)
     ).then(function(json){
-      console.log(json.data[0].images.original.url);
       if (json.data[0].images.original.url){
         let url = json.data[0].images.original.url;
         console.log('YAY API RESPONSE: ' + url);

@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { nextLyric, restartSong, changeImage } from './../actions';
+import { nextLyric, restartSong, changeImage, fetchGif } from './../actions';
 
 const SongDisplay = ({ dispatch, song, image }) => {
   console.log(image.url);
 
   const { title, artist, songArray, arrayPosition, id } = song;
   const currentLine = songArray[arrayPosition];
-  const pomeranian = 'https://media.giphy.com/media/4WQdykFn7DhcY/giphy.gif';
-
+  const heMan = 'https://media.giphy.com/media/M7gtacN7aPNsc/giphy.gif';
+  let cutLine = currentLine.split(' ');
   return (
     <div>
       <h1>{title}</h1>
@@ -22,8 +22,15 @@ const SongDisplay = ({ dispatch, song, image }) => {
         e.preventDefault();
         if(!(arrayPosition === songArray.length - 1)) {
           dispatch(nextLyric(id));
+          for (let i = 0; i < cutLine.length; i++){
+            setInterval(dispatch(fetchGif(cutLine[i])), 100000);
+            console.log('🖼 ' + cutLine[i]);
+            // dispatch(fetchGif(cutLine[i]));
+          }
+          // dispatch(fetchGif(title));
         } else {
           dispatch(restartSong(id));
+          dispatch(changeImage(heMan));
         }
       }}>
         <h1>
@@ -31,6 +38,7 @@ const SongDisplay = ({ dispatch, song, image }) => {
         </h1>
         <img style={{height: '400px'}}
           src={image.url}/>
+
         <h3>{image.url}</h3>
       </div>
     </div>

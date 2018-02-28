@@ -13,7 +13,7 @@ function SongSearch({ dispatch }){
           return;
         }
         dispatch(fetchSongId(input.value.trim()));
-        dispatch(fetchGif(input.value));
+        // dispatch(fetchGif(input.value));
         console.log(input.value.trim());
 
         input.value = '';
