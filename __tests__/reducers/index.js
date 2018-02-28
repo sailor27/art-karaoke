@@ -67,7 +67,7 @@ describe('Karaoke App', () => {
 
     it('Should change image', () => {
       const testUrl = 'https://media.giphy.com/media/brwknFAZxzfRm/giphy.gif';
-      expect(imageChangeReducer(initialState.image.url, actions.changeImage(testUrl))).toEqual(initialState.image);
+      expect(imageChangeReducer(initialState, actions.changeImage(testUrl))).toEqual({url:'https://media.giphy.com/media/brwknFAZxzfRm/giphy.gif'});
     });
 
   });

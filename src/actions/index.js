@@ -31,10 +31,9 @@ export const receiveSong = (title, artist, songId, songArray) => ({
   receivedAt: Date.now()
 });
 
-export const changeImage = (url, image) => ({
+export const changeImage = (url) => ({
   type: types.CHANGE_IMAGE,
-  url,
-  image
+  url
 });
 
 //async action - .then waits for API response to return

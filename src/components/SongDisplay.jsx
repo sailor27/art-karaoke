@@ -4,29 +4,30 @@ import { connect } from 'react-redux';
 import { nextLyric, restartSong, changeImage } from './../actions';
 
 const SongDisplay = ({ dispatch, song, image }) => {
+  console.log(image.url);
   const { title, artist, songArray, arrayPosition, id } = song;
   const currentLine = songArray[arrayPosition];
-  // let action;
+  const pomeranian = 'https://media.giphy.com/media/brwknFAZxzfRm/giphy.gif';
   return (
     <div>
       <h1>{title}</h1>
       <h4>{artist}</h4>
+      <div>
+        <img style={{height: '400px'}}src={image.url}/>
+      </div>
       <hr/>
       <div onClick={e => {
         e.preventDefault();
         if(!(arrayPosition === songArray.length - 1)) {
           dispatch(nextLyric(id));
-          /*dispatch(changeImage('https://media.giphy.com/media/brwknFAZxzfRm/giphy.gif'));*/
         } else {
           dispatch(restartSong(id));
+          dispatch(changeImage(pomeranian));
         }
       }}>
         <h1>
           {currentLine}
         </h1>
-        <div>
-          <img src={image}/>
-        </div>
       </div>
     </div>
   );
@@ -40,11 +41,11 @@ SongDisplay.propTypes = {
   songArray: PropTypes.array,
   arrayPosition: PropTypes.number,
   dispatch: PropTypes.func,
-  image: PropTypes.string
+  image: PropTypes.object
 };
 
 const mapStateToProps = state => {
-  const image = state.image.url;
+  const image = state.image;
   const song = state.songsById[state.currentSongId];
   const songInfo = {
     id: song.songId,

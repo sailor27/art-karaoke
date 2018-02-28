@@ -7,7 +7,7 @@ function Header(){
   };
   return (
     <div>
-      <h1>Art Museum Karaoke 🎤 🖼</h1>
+      <h1>Giphy Karaoke🖼</h1>
       <em>Search for a song:</em>
       <SongSearch />
     </div>
