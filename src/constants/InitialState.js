@@ -4,9 +4,9 @@ const songList = {
 };
 
 export const initialState = {
-  currentSongId: 1,
+  currentSongId: 2,
   image: {
-    url: 'https://media.giphy.com/media/l396SDCwMHfCaRAgo/giphy.gif'
+    url: 'https://media.giphy.com/media/M7gtacN7aPNsc/giphy.gif'
   },
 
   songsById: {

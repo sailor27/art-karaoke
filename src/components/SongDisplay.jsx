@@ -5,15 +5,17 @@ import { nextLyric, restartSong, changeImage } from './../actions';
 
 const SongDisplay = ({ dispatch, song, image }) => {
   console.log(image.url);
+
   const { title, artist, songArray, arrayPosition, id } = song;
   const currentLine = songArray[arrayPosition];
-  const pomeranian = 'https://media.giphy.com/media/brwknFAZxzfRm/giphy.gif';
+  const pomeranian = 'https://media.giphy.com/media/4WQdykFn7DhcY/giphy.gif';
+
   return (
     <div>
       <h1>{title}</h1>
       <h4>{artist}</h4>
       <div>
-        <img style={{height: '400px'}}src={image.url}/>
+
       </div>
       <hr/>
       <div onClick={e => {
@@ -22,12 +24,14 @@ const SongDisplay = ({ dispatch, song, image }) => {
           dispatch(nextLyric(id));
         } else {
           dispatch(restartSong(id));
-          dispatch(changeImage(pomeranian));
         }
       }}>
         <h1>
           {currentLine}
         </h1>
+        <img style={{height: '400px'}}
+          src={image.url}/>
+        <h3>{image.url}</h3>
       </div>
     </div>
   );

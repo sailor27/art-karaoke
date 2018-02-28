@@ -74,19 +74,21 @@ export function fetchLyrics(title, artist, musicMatchId, localSongId, dispatch) 
     }
   });
 }
-
+//why do i need to nest the inside of this function in return to get access to dispatch
 export function fetchGif(title, dispatch) {
-  return fetch('http://api.giphy.com/v1/gifs/search?q=' + title + '&api_key=rPLbf9a8yUJf1loewisunwUgD35IUL1g&limit=1').then(
-    response => response.json(),
-    error => console.log('An error occured requesting gif.', error)
-  ).then(function(json){
-    console.log(json.data[0].url);
-    if (json.data[0].url){
-      let url = json.data[0].url;
-      console.log('YAY API RESPONSE: ' + url);
-      dispatch(changeImage(url));
-    } else {
-      console.log('We could not find any gifs :(');
-    }
-  });
+  return function(dispatch){
+    return fetch('http://api.giphy.com/v1/gifs/search?q=' + title + '&api_key=rPLbf9a8yUJf1loewisunwUgD35IUL1g&limit=1').then(
+      response => response.json(),
+      error => console.log('An error occured requesting gif.', error)
+    ).then(function(json){
+      console.log(json.data[0].images.original.url);
+      if (json.data[0].images.original.url){
+        let url = json.data[0].images.original.url;
+        console.log('YAY API RESPONSE: ' + url);
+        dispatch(changeImage(url));
+      } else {
+        console.log('We could not find any gifs :(');
+      }
+    });
+  };
 }
